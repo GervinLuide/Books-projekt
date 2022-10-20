@@ -5,6 +5,7 @@ const submit = document.querySelector(".btn")
 const list = document.querySelector(".book-list")
 
 list.addEventListener('click', deleteTask)
+document.addEventListener('DOMContentLoaded', getBooks)
 
 submit.addEventListener("click", function (){
     if (titlein.value == "" && authorin.value == "" && isbnin.value == ""){
@@ -84,5 +85,38 @@ function deleteBookLS(book) {
 }
 
 
+function getBooks(){
+    let books
+    if (localStorage.getItem("books") === null){
+        books = []
 
+    } else {
+        books = JSON.parse(localStorage.getItem("books"))
+
+    }
+    books.forEach((book) => {
+        const booklistrow = document.createElement("tr");
+
+        const newTitle = document.createElement("td");
+        newTitle.innerHTML = book[0];
+        booklistrow.appendChild(newTitle);
+
+        const newAuthor = document.createElement("td");
+        newAuthor.innerHTML = book[1];
+        booklistrow.appendChild(newAuthor);
+
+        const newibms = document.createElement("td");
+        newibms.innerHTML = book[2];
+        booklistrow.appendChild(newibms);
+
+        const td_x = document.createElement("td")
+        const a = document.createElement("a")
+        a.appendChild(document.createTextNode("X"))
+        a.setAttribute("href", "#")
+        td_x.appendChild(a)
+        booklistrow.appendChild(td_x);
+
+        list.appendChild(booklistrow);
+    })
+}
 
