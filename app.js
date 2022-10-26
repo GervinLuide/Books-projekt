@@ -12,9 +12,9 @@ const isbnInput = document.querySelector("#isbn");
 form.addEventListener("click", addBook);
 
 function addBook(e){
-    console.log("oleme siin")
     //create a new object book with input value
     const book = new Book(titleInput.value, authorInput.value, isbnInput.value);
+    console.log(book)
     //add task value to the visual by UI object
     ui.addBook(book.title, book.author, book.isbn);
     book.addedToUI()

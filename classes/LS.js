@@ -1,19 +1,25 @@
 class LS {
-    addBook(book){
-        // vaata, kas LS sisaldab juba midagi
-        let books;
-        if(localStorage.getItem("books") === null){
-            // ei sisaldanud, tühi
-            books = [];
+
+    getData(title, author, isbn){
+        let data;
+        if(localStorage.getItem(title, author, isbn) === null){
+            data = [];
         } else {
-            // sisaldas, ime sisse
-            books = JSON.parse(localStorage.getItem("books"));
+            data = JSON.parse(localStorage.getItem(title, author, isbn));
         }
-        // lükka uus raamat järjendisse
+        return data
+    }
+
+    setData(name, data){
+        localStorage.setItem(name, JSON.stringify(data));
+    }
+
+
+
+    addBook(book){
+        let books = this.getData("books");
         books.push(book);
-        // kupata kogu jura uuesti LSi
-        localStorage.setItem("books", JSON.stringify(books));
-        //log to console that task is added to LS
+        this.setData("books", books);
         book.addedToLS();
     }
 
