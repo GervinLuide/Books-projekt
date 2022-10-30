@@ -23,4 +23,19 @@ class LS {
         book.addedToLS();
     }
 
+  deleteBook(book){
+        console.log("ls delete tootab")
+        let books = this.getData("books");
+        books.forEach(function (booksElement, booksIndex){
+            console.log(booksElement.title)
+            if(booksElement.title === book.title){
+                books.splice(booksIndex, 1);
+
+                }
+        })
+        this.setData("books", books);
+  }
 }
+
+
+

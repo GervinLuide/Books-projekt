@@ -25,4 +25,15 @@ class UI {
         list.appendChild(booklistrow)
 
     }
+
+    deleteBook(book){
+        let bookIndex = book.rowIndex;
+        if(book.lastChild.innerText == "X"){
+            if(confirm("Do you want to delete this book?")){
+                bookList.deleteRow(bookIndex)
+            }
+        }
+
+    }
 }
+
