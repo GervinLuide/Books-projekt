@@ -35,5 +35,13 @@ class UI {
         }
 
     }
+    getBooks(books) {
+        books.forEach((book => {
+            this.addBook(book.title, book.author, book.isbn)
+            console.log('Added book ', book)
+        }))
+    }
+
+
 }
 

@@ -6,10 +6,12 @@ const form = document.querySelector("#lisa-raamat");
 const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const isbnInput = document.querySelector("#isbn");
-const bookList = document.querySelector(".book-list")
+const bookList = document.querySelector(".book-list");
 
 // tasklist x click event
-bookList.addEventListener("click", deleteBook)
+bookList.addEventListener("click", deleteBook);
+// page reload
+document.addEventListener("DOMContentLoaded", getBooks);
 
 
 //events
@@ -43,4 +45,9 @@ function deleteBook(e){
     console.log(books)
     ls.deleteBook(books);
 
+}
+
+function getBooks(e){
+    books = ls.getData("books");
+    ui.getBooks(books);
 }
